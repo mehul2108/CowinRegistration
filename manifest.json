@@ -1,0 +1,36 @@
+{
+  "authors": {
+    "name": "Mehul Gohel",
+    "email": "mehul2108@gmail.com"
+  },
+  "name": "Cowin Registration",
+  "version": "1.0",
+  "description": "Build an Extension!",
+  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/Gohel.png",
+      "32": "images/Gohel.png",
+      "48": "images/Gohel.png",
+      "128": "images/Gohel.png"
+    }
+  },
+  "icons": {
+    "16": "images/Gohel.png",
+    "32": "images/Gohel.png",
+    "48": "images/Gohel.png",
+    "128": "images/Gohel.png"
+  },
+  "manifest_version": 2
+}
