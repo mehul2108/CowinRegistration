@@ -18,7 +18,8 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 let SearchInterval;
 let RowsCount = 0;
 const startProcess = () => {
-    document.getElementsByClassName('district-search')[0].click()
+    document.getElementsByClassName('district-search')[0].click();
+
     SearchInterval = setInterval(function () {
         if (document.getElementsByClassName('mat-selection-list')[0].children.length > 0) {
             clearInterval(SearchInterval);
@@ -58,11 +59,37 @@ const checkAvailableSlot = () => {
                 if (parseInt(activeButtonText) > 0) {
                     //console.log('Slot Available');
                     stopProcess();
-                    getActiveButton.click()
+                    getActiveButton.click();
+                    setTimeout(() => {
+                        enterCaptcha();
+                    }, 500);
                     break;
                 }
             }
         }
     }
     startProcess();
+}
+
+const enterCaptcha = () => {
+    let timeSlotInd = 1;
+    let timeSlots = $('.time-slot');
+    let slotind = 1;
+    if (timeSlots.length === 0) return;
+    if (timeSlots.length === 4) {
+        try {
+            slotind = parseInt(timeSlotInd) - 1;
+
+        } catch (e) {
+            slotind = 1
+        }
+    }
+    if (isNaN(slotind)) {
+        slotind = 1
+    }
+    timeSlots[slotind].click();
+
+    setTimeout(() => {
+        $("ion-button.confirm-btn")[0].click();
+    }, 500)
 }
