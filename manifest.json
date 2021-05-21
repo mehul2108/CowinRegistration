@@ -1,8 +1,8 @@
 {
-  "authors": {
-    "name": "Mehul Gohel",
-    "email": "mehul2108@gmail.com"
-  },
+  // "authors": {
+  //   "name": "Mehul Gohel",
+  //   "email": "mehul2108@gmail.com"
+  // },
   "name": "Cowin Registration",
   "version": "1.0",
   "description": "Build an Extension!",
