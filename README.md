@@ -24,4 +24,4 @@ onece it find available slot, you will be redirected to captcha page.
 
 select your time slot and enter captcha and Book appointment.
 
-Call 9662216970 for any query.
+Email mehul2108@gmail.com for any query.
