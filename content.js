@@ -55,7 +55,7 @@ const checkAvailableSlot = () => {
             const activeButtonText = getActiveButton.text.trim();
             //console.log(activeButtonText);
             if (!isNaN(activeButtonText)) {
-                if (parseInt(activeButtonText) > 0) {
+                if (parseInt(activeButtonText) > 80) {
                     //console.log('Slot Available');
                     stopProcess();
                     getActiveButton.click()
