@@ -90,6 +90,6 @@ const enterCaptcha = () => {
     timeSlots[slotind].click();
 
     setTimeout(() => {
-        $("ion-button.confirm-btn")[0].click();
+        //$("ion-button.confirm-btn")[0].click();
     }, 500)
 }
