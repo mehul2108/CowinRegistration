@@ -27,7 +27,7 @@ const startProcess = () => {
             //console.log(RowsCount + "____Searched");
             clickEighteen();
         }
-    }, 50)
+    }, 1500)
 }
 const stopProcess = () => {
     RowsCount = 0;
@@ -44,7 +44,7 @@ const clickEighteen = () => {
             RowsCount = 0;
             checkAvailableSlot();
         }
-    }, 50)
+    }, 1500)
 }
 
 const checkAvailableSlot = () => {
