@@ -20,6 +20,8 @@ Go to Extension.
 
 Select Age group you want to book for either 18+ / 45+
 
+Select day you want to book for either Today / Tomorrow
+
 click on Start Button From Extension
 
 Now sit back and wait untill Extension find available slot for you.
