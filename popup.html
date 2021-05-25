@@ -2,28 +2,69 @@
 <html>
   <head>
     <style>
+      body {
+        width: 180px;
+        text-align: center;
+      }
       button {
         height: 30px;
         width: 50px;
         outline: none;
         margin-top: 10px;
       }
+      #inputDay{
+        margin: 10px 0;
+      }
     </style>
   </head>
   <body>
-    <input type="radio" value="18" name="ageSelection" id="ageEighteen" title="18+" checked>
-    <label for="ageEighteen">18+</label>
-    <input type="radio" value="45" name="ageSelection" id="ageFortyfive" title="45+">
-    <label for="ageFortyfive">45+</label>
-
+    <div id="inputAge"> 
+      <input
+        type="radio"
+        value="18"
+        name="ageSelection"
+        id="ageEighteen"
+        title="18+"
+        checked
+      />
+      <label for="ageEighteen">18+</label>
+      <input
+        type="radio"
+        value="45"
+        name="ageSelection"
+        id="ageFortyfive"
+        title="45+"
+      />
+      <label for="ageFortyfive">45+</label>
+    </div>
+    <div id="inputDay">
+      <input
+        type="radio"
+        value="today"
+        name="daySelection"
+        id="dayToday"
+        title="Today"
+      />
+      <label for="dayToday">Today</label>
+      <input
+        type="radio"
+        value="tomorrow"
+        name="daySelection"
+        id="dayTomorrow"
+        title="tomorrow"
+        checked
+      />
+      <label for="dayTomorrow">Tomorrow</label>
+    </div>
     <div id="eighteen">
       <button id="startProcessEighteen">Start</button>
       <button id="stopProcessEighteen">Stop</button>
     </div>
-    <div id="fortyfive" style="display: none;">
+    <div id="fortyfive" style="display: none">
       <button id="startProcessFortyfive">Start</button>
       <button id="stopProcessFortyfive">Stop</button>
     </div>
+    <script src="jQuery.min.js"></script>
     <script src="popup.js"></script>
   </body>
 </html>
