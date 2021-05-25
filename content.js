@@ -18,7 +18,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 let SearchInterval;
 let RowsCount = 0;
 const startProcess = () => {
-    document.getElementsByClassName('district-search')[0].click();
+    document.getElementsByClassName('pin-search-btn')[0].click();
 
     SearchInterval = setInterval(function () {
         if (document.getElementsByClassName('mat-selection-list')[0].children.length > 0) {
