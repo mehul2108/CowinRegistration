@@ -11,8 +11,19 @@
     </style>
   </head>
   <body>
-    <button id="startProcess">Start</button>
-    <button id="stopProcess">Stop</button>
+    <input type="radio" value="18" name="ageSelection" id="ageEighteen" title="18+" checked>
+    <label for="ageEighteen">18+</label>
+    <input type="radio" value="45" name="ageSelection" id="ageFortyfive" title="45+">
+    <label for="ageFortyfive">45+</label>
+
+    <div id="eighteen">
+      <button id="startProcessEighteen">Start</button>
+      <button id="stopProcessEighteen">Stop</button>
+    </div>
+    <div id="fortyfive" style="display: none;">
+      <button id="startProcessFortyfive">Start</button>
+      <button id="stopProcessFortyfive">Stop</button>
+    </div>
     <script src="popup.js"></script>
   </body>
 </html>
