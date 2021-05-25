@@ -51,20 +51,18 @@ const checkAvailableSlot = () => {
     let allChilds = document.getElementsByClassName('mat-selection-list')[0].children
     for (let index = 0; index < allChilds.length; index++) {
         const element = allChilds[index];
-        if (element.querySelector('ul').children.length > 2) {
-            const getActiveButton = element.querySelector('ul').children[1].querySelector('a');
-            const activeButtonText = getActiveButton.text.trim();
-            //console.log(activeButtonText);
-            if (!isNaN(activeButtonText)) {
-                if (parseInt(activeButtonText) > 0) {
-                    //console.log('Slot Available');
-                    stopProcess();
-                    getActiveButton.click();
-                    setTimeout(() => {
-                        enterCaptcha();
-                    }, 500);
-                    break;
-                }
+        const getActiveButton = element.querySelectorAll('ul.slot-available-wrap')[0].children[1].querySelector('a');
+        const activeButtonText = getActiveButton.text.trim();
+        //console.log(activeButtonText);
+        if (!isNaN(activeButtonText)) {
+            if (parseInt(activeButtonText) > 0) {
+                //console.log('Slot Available');
+                stopProcess();
+                getActiveButton.click();
+                setTimeout(() => {
+                    enterCaptcha();
+                }, 500);
+                return;
             }
         }
     }
@@ -88,8 +86,12 @@ const enterCaptcha = () => {
         slotind = 1
     }
     timeSlots[slotind].click();
+    // setTimeout(() => {
+    //     $('.captcha-style').children[1].children[0].focus();
+    //     $('.captcha-style').children[1].children[0].select();
+    // }, 50);
 
-    setTimeout(() => {
-        //$("ion-button.confirm-btn")[0].click();
-    }, 500)
+    // setTimeout(() => {
+    //     $("ion-button.confirm-btn")[0].click();
+    // }, 500)
 }
