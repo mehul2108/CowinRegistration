@@ -25,10 +25,11 @@ document.getElementById('ageFortyfive').onclick = function (element) {
 };
 
 const buttonclick = (action, age) => {
+    let daySelection = $('input[name="daySelection"]:checked').val();
     chrome.tabs.query({ active: true }, function (tabs) {
         var tab = tabs[0];
 
-        chrome.tabs.sendMessage(tab.id, { "message": action, "age": age });
+        chrome.tabs.sendMessage(tab.id, { "message": action, "age": age, "day": daySelection });
     });
 }
 
