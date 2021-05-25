@@ -1,14 +1,17 @@
 let ageGroup = 18;
+let daySelection = 'tomorrow';
 // Listen for messages
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     // If the received message has the expected format...
     if (msg.message === 'start') {
         // Call the specified callback, passing
         // the web-page's DOM content as argument
-        if (msg.age == 18)
+        if (msg.age === 18)
             ageGroup = 18
-        else if (msg.age == 45)
+        else if (msg.age === 45)
             ageGroup = 45
+
+        daySelection = msg.day;
 
         startProcess();
         sendResponse("123");
@@ -26,7 +29,7 @@ let RowsCount = 0;
 const startProcess = () => {
     if (SearchInterval)
         stopProcess();
-        
+
     document.getElementsByClassName('pin-search-btn')[0].click();
 
     SearchInterval = setInterval(function () {
@@ -64,7 +67,13 @@ const checkAvailableSlot = () => {
     let allChilds = document.getElementsByClassName('mat-selection-list')[0].children
     for (let index = 0; index < allChilds.length; index++) {
         const element = allChilds[index];
-        const getActiveButton = element.querySelectorAll('ul.slot-available-wrap')[0].children[1].querySelector('a');
+        let getActiveButton;
+
+        if (daySelection === 'tomorrow')
+            getActiveButton = element.querySelectorAll('ul.slot-available-wrap')[0].children[1].querySelector('a');
+        if (daySelection === 'today')
+            getActiveButton = element.querySelectorAll('ul.slot-available-wrap')[0].children[0].querySelector('a');
+
         const activeButtonText = getActiveButton.text.trim();
         //console.log(activeButtonText);
         if (!isNaN(activeButtonText)) {
