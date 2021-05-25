@@ -1,9 +1,15 @@
+let ageGroup = 18;
 // Listen for messages
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     // If the received message has the expected format...
     if (msg.message === 'start') {
         // Call the specified callback, passing
         // the web-page's DOM content as argument
+        if (msg.age == 18)
+            ageGroup = 18
+        else if (msg.age == 45)
+            ageGroup = 45
+
         startProcess();
         sendResponse("123");
     }
@@ -18,6 +24,9 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 let SearchInterval;
 let RowsCount = 0;
 const startProcess = () => {
+    if (SearchInterval)
+        stopProcess();
+        
     document.getElementsByClassName('pin-search-btn')[0].click();
 
     SearchInterval = setInterval(function () {
@@ -35,7 +44,11 @@ const stopProcess = () => {
 }
 
 const clickEighteen = () => {
-    document.getElementsByClassName('agefilterblock')[0].children[0].children[1].click();
+    if (ageGroup === 18)
+        document.getElementsByClassName('agefilterblock')[0].children[0].children[1].click();
+    if (ageGroup === 45)
+        document.getElementsByClassName('agefilterblock')[0].children[1].children[1].click();
+
     SearchInterval = setInterval(function () {
         if (document.getElementsByClassName('mat-selection-list')[0].children.length < RowsCount) {
             clearInterval(SearchInterval);
