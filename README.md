@@ -10,11 +10,15 @@ click schedule
 
 You will go to appointment page.
 
-Select Search By District
+Select Search By District / Search by Pin
 
-Select State and District from dropdown
+Select State and District from dropdown for Search by District / Pin for Search by Pin
 
 Don't click on Search
+
+Go to Extension.
+
+Select Age group you want to book for either 18+ / 45+
 
 click on Start Button From Extension
 
