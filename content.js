@@ -78,7 +78,7 @@ const clickCharge = () => {
 }
 
 const checkAvailableSlot = () => {
-    let allChilds = document.getElementsByClassName('mat-selection-list')[0].children
+    let allChilds = document.getElementsByClassName('mat-selection-list')[0].children;
     if (allChilds.length > 0) {
         for (let index = 0; index < allChilds.length; index++) {
             const element = allChilds[index];
