@@ -20,7 +20,9 @@ Go to Extension.
 
 Select Age group you want to book for either 18+ / 45+
 
-Select day you want to book for either Today / Tomorrow
+Select Day you want to book for either Today / Tomorrow
+
+Select Charge you want to book for either Free / Paid
 
 click on Start Button From Extension
 
