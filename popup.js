@@ -1,38 +1,19 @@
-document.getElementById('startProcessEighteen').onclick = function (element) {
-    buttonclick('start', 18);
+
+document.getElementById('stopProcess').onclick = function (element) {
+    buttonclick('stop');
 };
 
-document.getElementById('stopProcessEighteen').onclick = function (element) {
-    buttonclick('stop', 18);
+document.getElementById('startProcess').onclick = function (element) {
+    buttonclick('start');
 };
 
-document.getElementById('startProcessFortyfive').onclick = function (element) {
-    buttonclick('start', 45);
-};
 
-document.getElementById('stopProcessFortyfive').onclick = function (element) {
-    buttonclick('stop', 45);
-};
-
-document.getElementById('ageEighteen').onclick = function (element) {
-    document.getElementById('eighteen').style.display = "block";
-    document.getElementById('fortyfive').style.display = "none";
-};
-
-document.getElementById('ageFortyfive').onclick = function (element) {
-    document.getElementById('eighteen').style.display = "none";
-    document.getElementById('fortyfive').style.display = "block";
-};
-
-const buttonclick = (action, age) => {
+const buttonclick = (action) => {
+    let ageSelection = parseInt($('input[name="ageSelection"]:checked').val());
     let daySelection = $('input[name="daySelection"]:checked').val();
+    let chargeSelection = $('input[name="chargeSelection"]:checked').val();
     chrome.tabs.query({ active: true }, function (tabs) {
         var tab = tabs[0];
-
-        chrome.tabs.sendMessage(tab.id, { "message": action, "age": age, "day": daySelection });
+        chrome.tabs.sendMessage(tab.id, { "message": action, "age": ageSelection, "day": daySelection, "charge": chargeSelection });
     });
 }
-
-document.getElementById('startProcessEighteen').onclick = function (element) {
-    buttonclick('start', 18);
-};
