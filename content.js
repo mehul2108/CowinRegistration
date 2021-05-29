@@ -1,5 +1,6 @@
 let ageGroup = 18;
 let daySelection = 'tomorrow';
+let chargeSelction = 'free';
 // Listen for messages
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     // If the received message has the expected format...
@@ -12,6 +13,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
             ageGroup = 45
 
         daySelection = msg.day;
+        chargeSelction = msg.charge;
 
         startProcess();
         sendResponse("123");
@@ -58,9 +60,19 @@ const clickEighteen = () => {
             RowsCount = document.getElementsByClassName('mat-selection-list')[0].children.length;
             //console.log(RowsCount + "____Searched");
             RowsCount = 0;
-            checkAvailableSlot();
+            clickCharge();
         }
     }, 1500)
+}
+
+const clickCharge = () => {
+    if (chargeSelction === 'free')
+        $('div[for=flexRadioDefault1]').find('label:contains("Free")').click();
+    if (chargeSelction === 'paid')
+        $('div[for=flexRadioDefault1]').find('label:contains("Paid")').click();
+    setTimeout(() => {
+        checkAvailableSlot();
+    }, 1000);
 }
 
 const checkAvailableSlot = () => {
