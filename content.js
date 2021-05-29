@@ -27,6 +27,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 });
 
 let SearchInterval;
+let SearchTimeOut;
 let RowsCount = 0;
 const startProcess = () => {
     if (SearchInterval)
@@ -46,6 +47,7 @@ const startProcess = () => {
 const stopProcess = () => {
     RowsCount = 0;
     clearInterval(SearchInterval);
+    clearTimeout(SearchTimeOut);
 }
 
 const clickEighteen = () => {
@@ -62,7 +64,7 @@ const clickEighteen = () => {
             RowsCount = 0;
             clickCharge();
         }
-    }, 1500)
+    }, 500)
 }
 
 const clickCharge = () => {
@@ -70,33 +72,35 @@ const clickCharge = () => {
         $('div[for=flexRadioDefault1]').find('label:contains("Free")').click();
     if (chargeSelction === 'paid')
         $('div[for=flexRadioDefault1]').find('label:contains("Paid")').click();
-    setTimeout(() => {
+    SearchTimeOut = setTimeout(() => {
         checkAvailableSlot();
     }, 1000);
 }
 
 const checkAvailableSlot = () => {
     let allChilds = document.getElementsByClassName('mat-selection-list')[0].children
-    for (let index = 0; index < allChilds.length; index++) {
-        const element = allChilds[index];
-        let getActiveButton;
+    if (allChilds.length > 0) {
+        for (let index = 0; index < allChilds.length; index++) {
+            const element = allChilds[index];
+            let getActiveButton;
 
-        if (daySelection === 'tomorrow')
-            getActiveButton = element.querySelectorAll('ul.slot-available-wrap')[0].children[1].querySelector('a');
-        if (daySelection === 'today')
-            getActiveButton = element.querySelectorAll('ul.slot-available-wrap')[0].children[0].querySelector('a');
+            if (daySelection === 'tomorrow')
+                getActiveButton = element.querySelectorAll('ul.slot-available-wrap')[0].children[1].querySelector('a');
+            if (daySelection === 'today')
+                getActiveButton = element.querySelectorAll('ul.slot-available-wrap')[0].children[0].querySelector('a');
 
-        const activeButtonText = getActiveButton.text.trim();
-        //console.log(activeButtonText);
-        if (!isNaN(activeButtonText)) {
-            if (parseInt(activeButtonText) > 0) {
-                //console.log('Slot Available');
-                stopProcess();
-                getActiveButton.click();
-                setTimeout(() => {
-                    enterCaptcha();
-                }, 500);
-                return;
+            const activeButtonText = getActiveButton.text.trim();
+            //console.log(activeButtonText);
+            if (!isNaN(activeButtonText)) {
+                if (parseInt(activeButtonText) > 0) {
+                    //console.log('Slot Available');
+                    stopProcess();
+                    getActiveButton.click();
+                    SearchTimeOut = setTimeout(() => {
+                        enterCaptcha();
+                    }, 500);
+                    return;
+                }
             }
         }
     }
